@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Hello from './containers/Hello';
+import Hello from './js/containers/Hello';
 import { Provider } from 'react-redux';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './js/config/registerServiceWorker';
 import { createStore } from 'redux';
-import { enthusiasm } from './reducers/index';
-import { StoreState }   from './types/StoreState';
+import { enthusiasm } from './js/reducers/index';
+import { StoreState }   from './js/types/StoreState';
 import './styles/scss/index.css';
 
 const store = createStore<StoreState>(enthusiasm, {
