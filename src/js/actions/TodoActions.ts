@@ -1,14 +1,14 @@
-import {TodoState} from "../stores/TodoStore";
+import { TodoState } from '../stores/TodoStore';
 
 export interface TodoAction {
     type: TodoActionType;
-    payload: TodoState
+    payload: TodoState;
 }
 
 export enum TodoActionType {
-    ADD_TODO = "ADD_TODO",
-    TOGGLE_TODO = "TOGGLE_TODO",
-    REMOVE_TODO = "REMOVE_TODO"
+    ADD_TODO = 'ADD_TODO',
+    TOGGLE_TODO = 'TOGGLE_TODO',
+    REMOVE_TODO = 'REMOVE_TODO'
 }
 
 let nextTodoId = 0;

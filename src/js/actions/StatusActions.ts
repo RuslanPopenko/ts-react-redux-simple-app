@@ -1,12 +1,12 @@
-import {Status} from "../stores/TodoStore";
+import { Status } from '../stores/TodoStore';
 
 export interface StatusAction {
     type: StatusActionType;
-    payload: Status
+    payload: Status;
 }
 
 export enum StatusActionType {
-    SET_NEW = "SET_NEW"
+    SET_NEW = 'SET_NEW'
 }
 
 export function setNewStatus(status: Status): StatusAction {

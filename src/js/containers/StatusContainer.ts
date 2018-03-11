@@ -1,7 +1,7 @@
-import {Status} from "../stores/TodoStore";
-import {connect, Dispatch} from "react-redux";
-import {setNewStatus, StatusAction} from "../actions/StatusActions";
-import {Radio, RadioProps} from "../components/Radio";
+import { Status } from '../stores/TodoStore';
+import { connect, Dispatch } from 'react-redux';
+import { setNewStatus, StatusAction } from '../actions/StatusActions';
+import { Radio, RadioProps } from '../components/Radio';
 
 export interface StatusOwnProps {
     status: Status;

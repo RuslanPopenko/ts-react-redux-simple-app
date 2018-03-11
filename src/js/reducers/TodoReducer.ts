@@ -1,5 +1,5 @@
-import {TodoAction, TodoActionType} from "../actions/TodoActions";
-import {TodoState} from "../stores/TodoStore";
+import { TodoAction, TodoActionType } from '../actions/TodoActions';
+import  { TodoState } from '../stores/TodoStore';
 
 function todo(state: TodoState, action: TodoAction) {
     switch (action.type) {
@@ -40,6 +40,3 @@ export function todoListReducer(state: Array<TodoState>, action: TodoAction) {
             return state;
     }
 }
-
-
-

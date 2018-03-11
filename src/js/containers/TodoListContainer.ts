@@ -1,8 +1,8 @@
-import {Status, TodoListState, TodoState} from "../stores/TodoStore";
-import {connect, Dispatch} from "react-redux";
-import {TodoAction, toggleTodo} from "../actions/TodoActions";
-import {TodoList, TodoListProps} from "../components/TodoList";
-import {TodoProps} from "../components/Todo";
+import { Status, TodoListState, TodoState } from '../stores/TodoStore';
+import { connect, Dispatch } from 'react-redux';
+import { TodoAction, toggleTodo } from '../actions/TodoActions';
+import { TodoList, TodoListProps } from '../components/TodoList';
+import { TodoProps } from '../components/Todo';
 
 function getVisibleTodos (todos: Array<TodoState>, status: Status): Array<TodoProps> {
     switch (status) {
@@ -16,6 +16,8 @@ function getVisibleTodos (todos: Array<TodoState>, status: Status): Array<TodoPr
             return todos.filter(
                 t => !t.completed
             );
+        default:
+            return [];
     }
 }
 

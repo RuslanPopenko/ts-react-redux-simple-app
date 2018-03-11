@@ -1,7 +1,7 @@
-import {combineReducers, createStore} from "redux";
-import {todoListReducer} from "../reducers/TodoReducer";
-import {statusReducer} from "../reducers/StatusReducer";
-import {initStore} from "../util/Initializers";
+import { combineReducers, createStore } from 'redux';
+import { todoListReducer } from '../reducers/TodoReducer';
+import { statusReducer } from '../reducers/StatusReducer';
+import { initStore } from '../util/Initializers';
 
 export interface TodoState {
     id: number;
@@ -16,9 +16,9 @@ export interface TodoListState {
 }
 
 export enum Status {
-    ALL = "ALL",
-    ACTIVE = "ACTIVE",
-    COMPLETED = "ACTIVE"
+    ALL = 'ALL',
+    ACTIVE = 'ACTIVE',
+    COMPLETED = 'COMPLETED'
 }
 
 export interface TodoStore {
@@ -34,6 +34,3 @@ export const todoStore = createStore<TodoStore>(
 );
 
 initStore(todoStore);
-
-
-

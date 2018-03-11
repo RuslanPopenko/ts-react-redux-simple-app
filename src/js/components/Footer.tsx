@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 import StatusContainer from '../containers/StatusContainer';
-import {Status} from "../stores/TodoStore";
+import { Status } from '../stores/TodoStore';
 
 export class Footer extends React.Component<{}, {}> {
 

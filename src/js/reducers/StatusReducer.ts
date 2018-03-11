@@ -1,5 +1,5 @@
-import {Status} from "../stores/TodoStore";
-import {StatusAction, StatusActionType} from "../actions/StatusActions";
+import { Status } from '../stores/TodoStore';
+import { StatusAction, StatusActionType } from '../actions/StatusActions';
 
 export function statusReducer(state: Status, action: StatusAction) {
     switch (action.type) {

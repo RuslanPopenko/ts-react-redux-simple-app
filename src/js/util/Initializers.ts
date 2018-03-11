@@ -1,6 +1,6 @@
-import {TodoStore} from "../stores/TodoStore";
-import {Store} from "redux";
-import {addTodo, toggleTodo} from "../actions/TodoActions";
+import { TodoStore } from '../stores/TodoStore';
+import { Store } from 'redux';
+import { addTodo, toggleTodo } from '../actions/TodoActions';
 
 export function initStore(todoStore: Store<TodoStore>): void {
     todoStore.dispatch(addTodo('New TODO'));
