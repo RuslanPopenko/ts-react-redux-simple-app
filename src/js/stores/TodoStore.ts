@@ -1,7 +1,6 @@
 import { combineReducers, createStore } from 'redux';
 import { todoListReducer } from '../reducers/TodoReducer';
 import { statusReducer } from '../reducers/StatusReducer';
-import { initStore } from '../util/Initializers';
 
 export interface TodoState {
     id: number;
@@ -30,7 +29,13 @@ export const todoStore = createStore<TodoStore>(
     combineReducers({
         todos: todoListReducer,
         status: statusReducer
-    })
+    }),
+    {
+        todos: [
+            {id: 1, text: 'New TODO'},
+            {id: 2, text: 'Even newer TODO'},
+            {id: 3, text: 'One more TODO'},
+        ],
+        status: Status.ALL
+    }
 );
-
-initStore(todoStore);

@@ -19,12 +19,16 @@ export class AddTodo extends React.Component<AddTodoProps, {}> {
                     className="add-todo__input"
                     placeholder="New Todo"
                     ref={(node) => this.input = node || new HTMLInputElement()}
-                    onKeyUp={(e) => this.props.submit && e.keyCode === 13 && this.props.submit(this.input)}
+                    onKeyUp={(e) => e.keyCode === 13 && this.submit()}
                 />
-                <button className="add-todo__button" onClick={() => this.props.submit && this.props.submit(this.input)}>
+                <button className="add-todo__button" onClick={() => this.submit()}>
                     Add Todo
                 </button>
             </div>
         );
+    }
+
+    private submit() {
+        return this.props.submit && this.input.value && this.props.submit(this.input);
     }
 }

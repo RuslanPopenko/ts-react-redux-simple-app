@@ -23,7 +23,7 @@ function todo(state: TodoState, action: TodoAction) {
     }
 }
 
-export function todoListReducer(state: Array<TodoState>, action: TodoAction) {
+export function todoListReducer(state: Array<TodoState> = [], action: TodoAction) {
     switch (action.type) {
         case TodoActionType.ADD_TODO:
             return [
