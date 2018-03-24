@@ -1,4 +1,22 @@
-@import "./variables.scss";
+@import "./_variables.scss";
+@import "./_icons.scss";
+
+@mixin todoListItem($icon: getIcon(box), $color: #af544f) {
+    box-shadow: 0 -1px 0 0 white, 0 -2px 0 0 #e6e6e6;
+    height: 80px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+    padding: 0 33px 0 78px;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: $color;
+    letter-spacing: 2px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 28px 16px;
+    background-image: $icon;
+}
 
 .todo-list {
     list-style: none;
@@ -10,35 +28,29 @@
     flex-direction: column-reverse;
 
     &__item--completed {
-        color: #16a085;
-        background-image: getIcon(done);
+        @include todoListItem(getIcon(done), #16a085);
     }
-}
 
-[class^="todo-list__item"] {
-    box-shadow: 0 -1px 0 0 white, 0 -2px 0 0 #e6e6e6;
-    height: 80px;
-    overflow: hidden;
-    box-sizing: border-box;
-    display: block;
-    padding: 0 33px 0 78px;
-    line-height: 80px;
-    text-transform: uppercase;
-    color: #af544f;
-    letter-spacing: 2px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-position: 28px 16px;
-    background-image: getIcon(box);
+    &__item--active {
+        @include todoListItem;
+    }
 }
 
 @media only screen and (min-width : $min-width) {
+    @mixin todoListItem {
+        box-shadow: 0 1px 0 0 #e6e6e6, 0 2px 0 0 white;
+    }
+
     .todo-list {
         order: -1;
         flex-direction: column;
-    }
-    
-    [class^="todo-list__item"] {
-        box-shadow: 0 1px 0 0 #e6e6e6, 0 2px 0 0 white;
+
+      &__item--completed {
+        @include todoListItem;
+      }
+
+      &__item--active {
+        @include todoListItem;
+      }
     }
 }

@@ -26,3 +26,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/styles/css/*.css
+/src/styles/scss/*.css
