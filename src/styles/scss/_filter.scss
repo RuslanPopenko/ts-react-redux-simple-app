@@ -1,0 +1,92 @@
+@import "./variables.scss";
+
+.filter {
+    &-wrapper {
+        order: -1;
+        background: #2c3e50;
+        height: 80px;
+        box-sizing: border-box;
+        color: #ecf0f1;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        padding: 32px 35px 0;
+        width: calc(100% + 20px);
+        font-weight: 700;
+        border: 0;
+        &__title,
+
+        .filter {
+            display: inline-block;
+            margin-right: 30px;
+        }
+    }
+
+    &__label {
+        cursor: pointer;
+
+        &--all {
+            padding-left: 21px;
+
+            &:after {
+                left: 5px;
+            }
+        }
+    }
+
+    [class^="filter__label"] {
+        position: relative;
+        display: inline-block;
+        padding-left: 16px;
+        color: rgba(236, 240, 241, 0.3);
+
+        &:hover {
+            color: #ccc;
+        }
+    }
+
+    &__radio {
+        position: absolute;
+        opacity: 0;
+
+        &:checked+[class^="filter__label"] {
+            color: #fff;
+        }
+
+        &:checked+.filter__label--all::before {
+            background: #af544f;
+        }
+
+        &:checked+.filter__label--all::after {
+            background: #16a085;
+        }
+
+        &:checked+.filter__label--active::before {
+            background: #af544f;
+        }
+
+        &:checked+.filter__label--completed::before {
+            background: #16a085;
+        }
+    }
+
+}
+
+[class^="filter__label"]::before,
+.filter__label--all::after {
+    content: '';
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    position: absolute;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    background: #647380;
+    left: 0;
+}
+
+@media only screen and (min-width : $min-width) {
+    .filter-wrapper {
+        order: 0;
+        border-radius: 3px 3px 0 0;
+    }
+}

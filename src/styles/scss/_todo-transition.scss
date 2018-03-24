@@ -1,0 +1,23 @@
+.todo-transition {
+    $without-height: 0;
+    $height: 80 px;
+    $transition: height 70ms ease-in;
+
+    &-enter {
+        height: $without-height;
+    }
+
+    &-enter.todo-transition-enter-active {
+        height: $height;
+        transition: $transition;
+    }
+
+    &-leave {
+        height: $height;
+    }
+    
+    &-leave.todo-transition-leave-active {
+        height: $without-height;
+        transition: $transition;
+    }
+}

@@ -1,0 +1,44 @@
+@import "./variables.scss";
+
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column-reverse;
+
+    &__item--completed {
+        color: #16a085;
+        background-image: getIcon(done);
+    }
+}
+
+[class^="todo-list__item"] {
+    box-shadow: 0 -1px 0 0 white, 0 -2px 0 0 #e6e6e6;
+    height: 80px;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: block;
+    padding: 0 33px 0 78px;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: #af544f;
+    letter-spacing: 2px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 28px 16px;
+    background-image: getIcon(box);
+}
+
+@media only screen and (min-width : $min-width) {
+    .todo-list {
+        order: -1;
+        flex-direction: column;
+    }
+    
+    [class^="todo-list__item"] {
+        box-shadow: 0 1px 0 0 #e6e6e6, 0 2px 0 0 white;
+    }
+}
