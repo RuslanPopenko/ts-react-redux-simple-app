@@ -1,4 +1,5 @@
 import { TodoState } from '../stores/TodoStore';
+import { v4 } from 'uuid';
 
 export interface TodoAction {
     type: TodoActionType;
@@ -11,19 +12,17 @@ export enum TodoActionType {
     REMOVE_TODO = 'REMOVE_TODO'
 }
 
-let nextTodoId = 0;
-
 export function addTodo (text: string): TodoAction {
     return {
         type: TodoActionType.ADD_TODO,
         payload: {
-            id: nextTodoId++,
+            id: v4(),
             text
         }
     };
 }
 
-export function toggleTodo (id: number): TodoAction {
+export function toggleTodo (id: string): TodoAction {
     return {
         type: TodoActionType.TOGGLE_TODO,
         payload: {

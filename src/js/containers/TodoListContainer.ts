@@ -29,7 +29,7 @@ function mapStateToProps(state: TodoListState) {
 
 function mapDispatchToProps(dispatch: Dispatch<TodoAction>) {
     return {
-        onTodoClick: (id: number) => {
+        onTodoClick: (id: string) => {
             dispatch(toggleTodo(id));
         }
     };

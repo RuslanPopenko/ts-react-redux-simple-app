@@ -28,7 +28,7 @@ export function todoListReducer(state: Array<TodoState> = [], action: TodoAction
         case TodoActionType.ADD_TODO:
             return [
                 ...state,
-                todo({id: -1}, action)
+                todo({id: ''}, action)
             ];
         case TodoActionType.TOGGLE_TODO:
             return state.map(t =>

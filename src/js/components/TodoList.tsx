@@ -4,7 +4,7 @@ import * as ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export class TodoListProps {
     todos: Array<TodoProps>;
-    onTodoClick?: (id: number) => void;
+    onTodoClick?: (id: string) => void;
 }
 
 export class TodoList extends React.Component<TodoListProps, {}> {

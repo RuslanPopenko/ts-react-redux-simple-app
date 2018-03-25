@@ -1,9 +1,10 @@
 import { combineReducers, createStore } from 'redux';
 import { todoListReducer } from '../reducers/TodoReducer';
 import { statusReducer } from '../reducers/StatusReducer';
+import { v4 } from 'uuid';
 
 export interface TodoState {
-    id: number;
+    id: string;
     completed?: boolean;
     text?: string;
     onClick?: () => void;
@@ -32,9 +33,9 @@ export const todoStore = createStore<TodoStore>(
     }),
     {
         todos: [
-            {id: 1, text: 'New TODO'},
-            {id: 2, text: 'Even newer TODO'},
-            {id: 3, text: 'One more TODO'},
+            {id: v4(), text: 'New TODO'},
+            {id: v4(), text: 'Even newer TODO'},
+            {id: v4(), text: 'One more TODO'},
         ],
         status: Status.ALL
     }
