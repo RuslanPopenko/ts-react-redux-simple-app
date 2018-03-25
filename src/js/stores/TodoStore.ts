@@ -1,7 +1,6 @@
-import { combineReducers, createStore } from 'redux';
-import { todoListReducer } from '../reducers/TodoReducer';
-import { statusReducer } from '../reducers/StatusReducer';
-import { v4 } from 'uuid';
+import todoApp, { ListByFilterType } from '../reducers';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 export interface TodoState {
     id: string;
@@ -26,17 +25,7 @@ export interface TodoStore {
     status: Status;
 }
 
-export const todoStore = createStore<TodoStore>(
-    combineReducers({
-        todos: todoListReducer,
-        status: statusReducer
-    }),
-    {
-        todos: [
-            {id: v4(), text: 'New TODO'},
-            {id: v4(), text: 'Even newer TODO'},
-            {id: v4(), text: 'One more TODO'},
-        ],
-        status: Status.ALL
-    }
+export const todoStore = createStore<ListByFilterType>(
+    todoApp,
+    applyMiddleware(thunk)
 );

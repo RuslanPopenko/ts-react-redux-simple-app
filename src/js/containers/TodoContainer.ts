@@ -1,8 +1,9 @@
-import { connect, Dispatch } from 'react-redux';
-import { addTodo, TodoAction } from '../actions/TodoActions';
+import { connect } from 'react-redux';
+import { addTodo } from '../actions';
 import { AddTodo, AddTodoProps } from '../components/AddTodo';
 
-function mapDispatchToProps(dispatch: Dispatch<TodoAction>): AddTodoProps {
+// tslint:disable-next-line:no-any
+function mapDispatchToProps(dispatch: any): AddTodoProps {
     return {
         submit: (input: HTMLInputElement) => {
             dispatch(addTodo(input.value));
