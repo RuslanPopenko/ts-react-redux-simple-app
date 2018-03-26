@@ -1,7 +1,8 @@
 import { Status } from '../stores/TodoStore';
 import { connect, Dispatch } from 'react-redux';
-import { setNewStatus, StatusAction } from '../actions/StatusActions';
+import { StatusAction } from '../actions/StatusActions';
 import { Radio, RadioProps } from '../components/Radio';
+import { TodoRequestActionType } from '../reducers/createList';
 
 export interface StatusOwnProps {
     status: Status;
@@ -15,7 +16,12 @@ function mapStateToProps(state: Status, ownProps: StatusOwnProps) {
 function  mapDispatchToProps(dispatch: Dispatch<StatusAction>, ownProps: StatusOwnProps) {
     return {
         onChange: () => {
-            dispatch(setNewStatus(ownProps.status));
+            dispatch({
+                type: TodoRequestActionType.CHANGE_FILTER_STATUS_SUCCESS,
+                payload: {
+                    filter: ownProps.status
+                }
+            });
         }
     };
 }

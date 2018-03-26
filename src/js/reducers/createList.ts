@@ -5,6 +5,7 @@ export interface CreateListState {
     getTodos: Array<TodoState>;
     isFetching: boolean;
     errorMessage: string; 
+    filterStatus: Status;
 }
 
 export enum TodoRequestActionType {
@@ -12,7 +13,8 @@ export enum TodoRequestActionType {
     ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS',
     TOGGLE_TODO_SUCCESS = 'TOGGLE_TODO_SUCCESS',
     FETCH_TODOS_REQUEST = 'FETCH_TODOS_REQUEST',
-    FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE'    
+    FETCH_TODOS_FAILURE = 'FETCH_TODOS_FAILURE',
+    CHANGE_FILTER_STATUS_SUCCESS = 'CHANGE_FILTER_STATUS_SUCCESS' 
 }
 
 export interface TodoRequestAction {
@@ -33,9 +35,10 @@ const createList = (filter: string) => {
       (toogle.completed && filter === Status.ACTIVE) ||
       (!toogle.completed && filter === Status.COMPLETED)
     );
+    const distinct = (todo: TodoState) => todo.id !== toogle.id;
     return shouldRemove ?
-      state.filter(todo => todo.id !== toogle.id) :
-      state;
+      state.filter(distinct) :
+      state.map(todo => distinct(todo) ? todo : toogle );
   };
 
   // tslint:disable-next-line:no-shadowed-variable
@@ -47,7 +50,7 @@ const createList = (filter: string) => {
           state;
       case TodoRequestActionType.ADD_TODO_SUCCESS:
         return filter !== Status.COMPLETED ?
-          [...state, action.payload.todos] :
+          [...state, action.payload.actionTodo] :
           state;
       case TodoRequestActionType.TOGGLE_TODO_SUCCESS:
         return handleToggle(state, action);

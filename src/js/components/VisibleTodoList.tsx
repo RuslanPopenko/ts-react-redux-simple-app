@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { getVisibleTodos, getErrorMessage, getIsFetching } from '../reducers';
+import { getVisibleTodos, getErrorMessage, getIsFetching, getCurrentFilter } from '../reducers';
 import { TodoList } from './TodoList';
 import { Status, TodoState } from '../stores/TodoStore';
 
@@ -11,7 +11,7 @@ type VisibleTodoListProps = {
     todos: Array<TodoState>,
     isFetching: boolean,
     fetchTodos?: (status: Status) => void,
-    toggleTodo?: () => void,
+    toggleTodo?: (id: string) => void,
   };
 
 class VisibleTodoList extends React.Component<VisibleTodoListProps, {}> {
@@ -39,7 +39,7 @@ class VisibleTodoList extends React.Component<VisibleTodoListProps, {}> {
       return <p>Loading...</p>;
     }
     if (errorMessage && !todos.length) {
-        confirm('Press a button!'); 
+        confirm(`There is an error: ${errorMessage}`);
     }
 
     return (
@@ -52,9 +52,8 @@ class VisibleTodoList extends React.Component<VisibleTodoListProps, {}> {
 }
 
 // tslint:disable-next-line:no-any
-const mapStateToProps = (state: any, obj: any) => {
-  const { params } = obj;  
-  const filter = (params && params.filter) || Status.ALL;
+const mapStateToProps = (state: any) => {
+  const filter = getCurrentFilter(state);
   return {
     isFetching: getIsFetching(state, filter),
     errorMessage: getErrorMessage(state, filter),

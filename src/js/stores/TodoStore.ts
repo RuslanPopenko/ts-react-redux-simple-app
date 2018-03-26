@@ -1,6 +1,7 @@
 import todoApp, { ListByFilterType } from '../reducers';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 export interface TodoState {
     id: string;
@@ -21,11 +22,11 @@ export enum Status {
 }
 
 export interface TodoStore {
-    todos: Array<TodoState>;
+    todoApp: ListByFilterType;
     status: Status;
 }
 
 export const todoStore = createStore<ListByFilterType>(
     todoApp,
-    applyMiddleware(thunk)
+    composeWithDevTools(applyMiddleware(thunk))
 );
